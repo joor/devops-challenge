@@ -1,5 +1,5 @@
 FROM django
 
-ADD ./pizza_app /pizza_app
+ADD . /pizza_app
 
 WORKDIR /pizza_app

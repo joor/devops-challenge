@@ -18,6 +18,6 @@ We want to develop a small Django webapp that allows users to view our pizza men
     - Load fixture data into the database: `manage.py loaddata pizza_data.json`
   * Run `python manage.py runserver` to start the app in developer mode, and visit in the browser at: http://localhost:8000/pizza/
 
-2. Once the application runs locally without error, let's get it running in a Docker container.
+2. Once the application runs locally without error, let's get it running in a Docker container.You will find a stubbed-out Dockerfile and docker-compose.yaml we will use to run the service. There might be a bug or two in there!
 
-3. Once we have the Dockerized app running, let's see if we can deploy it to our Kubernetes cluster!
+3. Once we have the Dockerized app running, let's see if we can deploy it to our Kubernetes cluster! We have stubbed out a yaml file for the deployment. Let's discuss what else we might need.
