@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::488458563198:role/eks-interview-worker
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+    - rolearn: arn:aws:iam::488458563198:role/eks-interview-admin
+      groups:
+        - system:masters
+  mapUsers: |
+    - userarn: arn:aws:iam::488458563198:user/kmckew
+      username: kmckew
+      groups:
+        - system:masters
+    - userarn: arn:aws:iam::488458563198:user/joor-interview-user
+      username: joor-interview-user
+      groups:
+        - system:masters
+    - userarn: arn:aws:iam::488458563198:user/nicolas
+      username: nicolas
+      groups:
+        - system:masters
