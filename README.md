@@ -12,7 +12,7 @@ We want to develop a small Django webapp that allows users to view our pizza men
 
 ## Requirements
 
-1. On our webpage, we will display each pizza with ingredients, price, and other information like whether the pizza is gluten-free or vegetarian. The app is backed by a SQLite database (`pizza_app/db.sqlite3`) with fixture data to be loaded from `pizza_app/pizza_data.json`.
+1. On our webpage, we will display each pizza and its ingredients. The app is backed by a SQLite database (`pizza_app/db.sqlite3`) with fixture data to be loaded from `pizza_app/pizza_data.json`.
   * In the project directory, you can run `python manage.py` to see a list of available Django management commands. Django management commmands can be used to do things like:
     - Run database migrations: `manage.py migrate`
     - Load fixture data into the database: `manage.py loaddata pizza_data.json`
