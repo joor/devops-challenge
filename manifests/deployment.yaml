@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: application
+      version: "1"
+  template:
+    metadata:
+      labels:
+        app: echoserver
+        version: "1"
+    spec:
+      containers:
+      - name: echoserver
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "50000000m"
+        image: gcr.io/google_containers/echoserver:1.8
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+          - mountPath: /config
+            name: config
+            readOnly: true
+          - mountPath: /data
+            name: writable-data-dir
+            readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: config-map
+            optional: false
+        - name: writable-data-dir
+          emptyDir: {}
+            
+      env:
+      - name: NODE_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeName
+      - name: POD_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.name
+      - name: POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: POD_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+            

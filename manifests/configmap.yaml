@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+data:
+  hello: "world"
+  # file-like keys
+  app.config: |
+    DEBUG=true
+    LISTEN=8080
+  app-secret.config: |
+    secret_key=sqOS1oICfU067Q
